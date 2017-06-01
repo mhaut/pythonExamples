@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 class Camera(object):
 	urls = []
-	"IP:PORT/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=X&pwd=Y&.mjpg"
+	#urls.append("IP:PORT/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=X&pwd=Y&.mjpg")
 	alltheads = [None] * len(urls)
 	for url, i in zip(urls, range(len(urls))):
 		alltheads[i] = Manyfoxcam(url)
