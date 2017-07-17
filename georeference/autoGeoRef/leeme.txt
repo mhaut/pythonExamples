@@ -1,0 +1,45 @@
+
+
+install opencv 3.1
+
+sudo apt-get -y install libopencv-dev build-essential cmake git libgtk2.0-dev pkg-config python-dev python-numpy libdc1394-22 libdc1394-22-dev libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev libtbb-dev libqt4-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils unzip
+
+mkdir ~/opencv3
+cd ~/opencv3
+
+Download opencv 3.1
+http://opencv.org/downloads.html
+
+unzip opencv-3.1.0.zip
+cd opencv-3.1.0
+mkdir build
+cd build
+cmake ..
+make -j
+
+if compile ok:
+
+cd ~/opencv3
+git clone https://github.com/Itseez/opencv_contrib
+cd opencv-3.1.0/build
+cmake -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -DBUILD_opencv_legacy=OFF ..
+make -j
+sudo make install
+
+
+DEPENDECES:
+sudo apt-get install gdal-bin
+
+RECOMMENDED:
+sudo apt-get install qsig
+
+ERROR:
+if error:
+
+    matches = flann.knnMatch(des1, des2, k=2)
+cv2.error: /home/mario/software/opencv3/opencv-3.1.0/modules/python/src2/cv2.cpp:163: error: (-215) The data should normally be NULL! in function allocate
+
+
+--> SOLUTION: Comment assert and recompile opencv
+
+
